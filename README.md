@@ -3,9 +3,14 @@
 This is simple REST web service on Java. 
 Tecnologies:
   -Java 8
+  
   -MySQL
+  
   -Hibernate/JPA
+  
   -Spring framework
+  
+  -Apatche Tomcat 8.0.33
 
 #Task description:
 #Task 0. (/task0users; /task0movies; /task0ratings)
