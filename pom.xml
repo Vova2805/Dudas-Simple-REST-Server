@@ -9,13 +9,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-
     <properties>
         <javax.servlet>3.0.1</javax.servlet>
         <spring.version>3.2.6.RELEASE</spring.version>
         <hibernate.version>4.1.11.Final</hibernate.version>
         <mysql.version>5.1.24</mysql.version>
     </properties>
+
     <build>
         <finalName>SimpleREST</finalName>
         <plugins>
@@ -43,11 +43,13 @@
     </build>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate4</artifactId>
@@ -65,11 +67,13 @@
             <artifactId>jackson-core</artifactId>
             <version>2.3.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.3.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -125,5 +129,6 @@
             <artifactId>jta</artifactId>
             <version>1.1</version>
         </dependency>
+
     </dependencies>
 </project>

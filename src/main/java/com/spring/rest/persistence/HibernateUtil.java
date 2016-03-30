@@ -5,8 +5,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-import javax.swing.*;
-
 /**
  * Created by Volodymyr Dudas on 29.03.2016.
  */
@@ -26,6 +24,7 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
+
     public static SessionFactory getSessionFactory() {
         return SESSION_FACTORY;
     }

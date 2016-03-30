@@ -1,4 +1,4 @@
-package com.spring.rest.domain;
+package com.spring.rest.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by Volodymyr Dudas on 29.03.2016.
  */
 
-public class Rating  implements Serializable {
+public class Rating implements Serializable {
     private java.lang.Integer id;
     private java.lang.Integer rating;
     private Date ratingDate;

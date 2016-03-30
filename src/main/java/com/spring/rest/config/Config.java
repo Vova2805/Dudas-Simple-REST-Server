@@ -26,13 +26,14 @@ public class Config extends WebMvcConfigurerAdapter {
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/pages/");
+        resolver.setPrefix("/pages/");//Where is our jsp pages
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;
     }
 
-    public MappingJackson2HttpMessageConverter jacksonMessageConverter(){
+    //for JSON serialization
+    public MappingJackson2HttpMessageConverter jacksonMessageConverter() {
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -44,6 +45,7 @@ public class Config extends WebMvcConfigurerAdapter {
 
     }
 
+    //Message converter
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(jacksonMessageConverter());
         super.configureMessageConverters(converters);

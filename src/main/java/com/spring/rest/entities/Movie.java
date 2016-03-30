@@ -1,16 +1,12 @@
-package com.spring.rest.domain;
+package com.spring.rest.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Created by Volodymyr Dudas on 29.03.2016.
  */
 
-public class Movie   implements Serializable {
+public class Movie implements Serializable {
     private java.lang.Integer id;
     private String title;
     private String director;

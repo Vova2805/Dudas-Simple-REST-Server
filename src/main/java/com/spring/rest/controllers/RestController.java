@@ -6,10 +6,9 @@ import com.spring.rest.dao.implementation.UserDaoImpl;
 import com.spring.rest.dao.interfaces.MovieDao;
 import com.spring.rest.dao.interfaces.RatingDao;
 import com.spring.rest.dao.interfaces.UserDao;
-import com.spring.rest.domain.Movie;
-import com.spring.rest.domain.Rating;
-import com.spring.rest.domain.User;
-import org.springframework.http.MediaType;
+import com.spring.rest.entities.Movie;
+import com.spring.rest.entities.Rating;
+import com.spring.rest.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
- * Created by Volodymyr Dudas on 29.03.2016.
- */
 @Controller
-@RequestMapping(value = "/myservice")
+@RequestMapping(value = "/myservice")//root
 public class RestController {
 
+    //our services
     private static UserDao userService;
     private static MovieDao movieService;
     private static RatingDao ratingService;
@@ -41,49 +38,52 @@ public class RestController {
     public
     @ResponseBody
     List<User> getAllUsers() {
-        List<User> usersList =  userService.getUsersList();
+        List<User> usersList = userService.getUsersList();
         return usersList;
     }
 
+    //return user by id
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public
     @ResponseBody
     User getUser(@PathVariable int id) {
-        User user =  userService.getUserById(id);
+        User user = userService.getUserById(id);
         return user;
     }
 
-    //task0users Return all users
+    //task0users Return all movies
     @RequestMapping(value = "/task0movies", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Movie> getAllMovies() {
-        List<Movie> moviesList =  movieService.getMoviesList();
+        List<Movie> moviesList = movieService.getMoviesList();
         return moviesList;
     }
 
+    //return movie by id
     @RequestMapping(value = "/movies/{id}", method = RequestMethod.GET)
     public
     @ResponseBody
     Movie getMovie(@PathVariable int id) {
-        Movie movie =  movieService.getMovieById(id);
+        Movie movie = movieService.getMovieById(id);
         return movie;
     }
 
-    //task0users Return all users
+    //task0users Return all ratings
     @RequestMapping(value = "/task0ratings", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Rating> getAllRatings() {
-        List<Rating> ratingsList =  ratingService.getRatingsList();
+        List<Rating> ratingsList = ratingService.getRatingsList();
         return ratingsList;
     }
 
+    //return reting by id
     @RequestMapping(value = "/ratings/{id}", method = RequestMethod.GET)
     public
     @ResponseBody
     Rating getRating(@PathVariable int id) {
-        Rating rating =  ratingService.getRatingById(id);
+        Rating rating = ratingService.getRatingById(id);
         return rating;
     }
 
@@ -91,7 +91,7 @@ public class RestController {
     public
     @ResponseBody
     List<Rating> getAllRatings1() {
-        List<Rating> ratingsList =  ratingService.performTask1();
+        List<Rating> ratingsList = ratingService.performTask1();
         return ratingsList;
     }
 
@@ -100,7 +100,7 @@ public class RestController {
     public
     @ResponseBody
     List<Movie> getMovies2() {
-        List<Movie> moviesList =  movieService.performTask2();
+        List<Movie> moviesList = movieService.performTask2();
         return moviesList;
     }
 
@@ -108,7 +108,7 @@ public class RestController {
     public
     @ResponseBody
     List<RatingDao.Task3> getRatings3() {
-        List<RatingDao.Task3> ratings =  ratingService.performTask3();
+        List<RatingDao.Task3> ratings = ratingService.performTask3();
         return ratings;
     }
 
@@ -116,7 +116,7 @@ public class RestController {
     public
     @ResponseBody
     List<String> getTitles() {
-        List<String> titles =  movieService.performTask4();
+        List<String> titles = movieService.performTask4();
         return titles;
     }
 

@@ -2,7 +2,7 @@ package com.spring.rest.dao.implementation;
 
 
 import com.spring.rest.dao.interfaces.UserDao;
-import com.spring.rest.domain.User;
+import com.spring.rest.entities.User;
 import com.spring.rest.persistence.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

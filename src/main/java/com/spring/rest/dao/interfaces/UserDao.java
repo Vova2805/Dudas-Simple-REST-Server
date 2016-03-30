@@ -1,7 +1,7 @@
 package com.spring.rest.dao.interfaces;
 
 
-import com.spring.rest.domain.User;
+import com.spring.rest.entities.User;
 
 import java.util.List;
 

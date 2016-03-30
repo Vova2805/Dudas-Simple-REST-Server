@@ -1,10 +1,8 @@
 package com.spring.rest.dao.implementation;
-
-
 import com.spring.rest.dao.interfaces.RatingDao;
-import com.spring.rest.domain.Movie;
-import com.spring.rest.domain.Rating;
-import com.spring.rest.domain.User;
+import com.spring.rest.entities.Movie;
+import com.spring.rest.entities.Rating;
+import com.spring.rest.entities.User;
 import com.spring.rest.persistence.HibernateUtil;
 import org.hibernate.*;
 import org.hibernate.criterion.Criterion;
@@ -12,7 +10,6 @@ import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +22,7 @@ import java.util.List;
 public class RatingDaoImpl implements RatingDao {
 
     @Autowired
-    SessionFactory sessionFactory  = HibernateUtil.getSessionFactory();
+    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     Session session = null;
     Transaction tx = null;
@@ -33,7 +30,7 @@ public class RatingDaoImpl implements RatingDao {
     @Override
     public Rating getRatingById(int id) {
         session = sessionFactory.openSession();
-        Rating rating = (Rating) session.load(Rating.class,new Integer(id));
+        Rating rating = (Rating) session.load(Rating.class, new Integer(id));
         tx = session.getTransaction();
         session.beginTransaction();
         tx.commit();
@@ -59,22 +56,22 @@ public class RatingDaoImpl implements RatingDao {
         tx = session.getTransaction();
         session.beginTransaction();
         List<Rating> ratings = session.createCriteria(Rating.class).list();
-        for (Iterator iterator = ratings.iterator(); iterator.hasNext();) {
+        for (Iterator iterator = ratings.iterator(); iterator.hasNext(); ) {
             Rating rating = (Rating) iterator.next();
             Criteria crUser = session.createCriteria(User.class);
             Criteria crMovie = session.createCriteria(Movie.class);
 
-            crUser.add(Restrictions.eq("id",rating.getUserId()));
-            crMovie.add(Restrictions.eq("id",rating.getMovieId()));
+            crUser.add(Restrictions.eq("id", rating.getUserId()));
+            crMovie.add(Restrictions.eq("id", rating.getMovieId()));
             List<User> lu = crUser.list();
-            User resUser = lu==null?null:lu.get(0);
+            User resUser = lu == null ? null : lu.get(0);
             List<Movie> lm = crMovie.list();
-            Movie resMovie = lm==null?null:lm.get(0);
+            Movie resMovie = lm == null ? null : lm.get(0);
 
             result.add(new Task6(rating.getRating(),
-                    resUser!=null?resUser.getName():"",
-                    resMovie!=null?resMovie.getTitle():""
-                    ));
+                    resUser != null ? resUser.getName() : "",
+                    resMovie != null ? resMovie.getTitle() : ""
+            ));
         }
         tx.commit();
         session.close();
@@ -93,11 +90,11 @@ public class RatingDaoImpl implements RatingDao {
         Criteria userCR = session.createCriteria(User.class);
         List<User> withNullRatings = new ArrayList<>();
         for (Iterator iterator =
-             nullRatings.iterator(); iterator.hasNext();) {
-             Rating rating = (Rating) iterator.next();
-             withNullRatings.add( (User) session.load(User.class,new Integer(rating.getUserId())));
+             nullRatings.iterator(); iterator.hasNext(); ) {
+            Rating rating = (Rating) iterator.next();
+            withNullRatings.add((User) session.load(User.class, new Integer(rating.getUserId())));
         }
-        String hql = "UPDATE Rating set ratingDate = :ratingDate "  +
+        String hql = "UPDATE Rating set ratingDate = :ratingDate " +
                 "WHERE ratingDate is NULL";
         Query query = session.createQuery(hql);
         query.setParameter("ratingDate", new Date());
@@ -124,9 +121,9 @@ public class RatingDaoImpl implements RatingDao {
         cr.addOrder(Order.asc("ratingDate"));
         List<Rating> ratings = cr.list();
 
-        for (Iterator iterator =ratings.iterator(); iterator.hasNext();) {
+        for (Iterator iterator = ratings.iterator(); iterator.hasNext(); ) {
             Rating rating = (Rating) iterator.next();
-            result.add(new Task3(rating.getMovieId(),rating.getRatingDate()));
+            result.add(new Task3(rating.getMovieId(), rating.getRatingDate()));
         }
         tx = session.getTransaction();
         session.beginTransaction();

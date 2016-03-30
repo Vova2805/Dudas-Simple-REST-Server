@@ -1,4 +1,4 @@
-package com.spring.rest.domain;
+package com.spring.rest.entities;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Volodymyr Dudas on 29.03.2016.
  */
 
-public class User  implements Serializable {
+public class User implements Serializable {
     private java.lang.Integer id;
     private String name;
 
@@ -15,7 +15,6 @@ public class User  implements Serializable {
 
     public User(java.lang.Integer id, String name) {
         this.id = id;
-        this.name = name;
     }
 
     public java.lang.Integer getId() {

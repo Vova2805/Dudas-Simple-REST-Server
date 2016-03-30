@@ -1,6 +1,6 @@
 package com.spring.rest.dao.interfaces;
 
-import com.spring.rest.domain.Rating;
+import com.spring.rest.entities.Rating;
 
 import java.util.Date;
 import java.util.List;
@@ -10,11 +10,16 @@ import java.util.List;
  */
 public interface RatingDao {
     Rating getRatingById(int id);
+
     List<Rating> getRatingsList();
+
     List<Rating> performTask1();
+
     List<Task3> performTask3();
+
     List<Task6> performTask6();
-    class Task3{
+
+    class Task3 {
         private int movieID;
         private Date ratingDate;
 
@@ -42,7 +47,8 @@ public interface RatingDao {
             this.ratingDate = ratingDate;
         }
     }
-    class Task6{
+
+    class Task6 {
         private int rating;
         private String userName;
         private String movieTitle;
